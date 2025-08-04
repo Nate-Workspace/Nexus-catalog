@@ -26,7 +26,7 @@ const initialState: ProductState = {
   selectedCategory: "all",
   sortBy: "none",
   currentPage: 1,
-  itemsPerPage: 12, // Display 12 products per page
+  itemsPerPage: 12,
   totalProducts: 0,
   loading: false,
   error: null,
@@ -38,12 +38,12 @@ const productsSlice = createSlice({
   reducers: {
     setCategoryFilter: (state, action: PayloadAction<string | "all">) => {
       state.selectedCategory = action.payload
-      state.currentPage = 1 // Reset to first page on filter change
+      state.currentPage = 1 
       productsSlice.caseReducers.applyFiltersAndSort(state)
     },
     setSortBy: (state, action: PayloadAction<"price-asc" | "price-desc" | "none">) => {
       state.sortBy = action.payload
-      state.currentPage = 1 // Reset to first page on sort change
+      state.currentPage = 1 
       productsSlice.caseReducers.applyFiltersAndSort(state)
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
@@ -53,20 +53,19 @@ const productsSlice = createSlice({
     applyFiltersAndSort: (state) => {
       let tempProducts = [...state.allProducts]
 
-      // Apply category filter
+
       if (state.selectedCategory !== "all") {
         tempProducts = tempProducts.filter((product) => product.category === state.selectedCategory)
       }
       state.filteredProducts = tempProducts
 
-      // Apply sorting
+
       if (state.sortBy === "price-asc") {
         tempProducts.sort((a, b) => a.price - b.price)
       } else if (state.sortBy === "price-desc") {
         tempProducts.sort((a, b) => b.price - a.price)
       }
 
-      // Apply pagination
       const startIndex = (state.currentPage - 1) * state.itemsPerPage
       const endIndex = startIndex + state.itemsPerPage
       state.displayedProducts = tempProducts.slice(startIndex, endIndex)
@@ -83,7 +82,7 @@ const productsSlice = createSlice({
         state.allProducts = action.payload
         state.totalProducts = action.payload.length
 
-        // Extract unique categories
+
         const uniqueCategories = Array.from(new Set(action.payload.map((product) => product.category)))
         state.categories = ["all", ...uniqueCategories]
 

@@ -1,3 +1,4 @@
+import { PaginationControls } from './components/PaginationControls'
 import { ProductList } from './components/ProductList'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       </header>
       <main className="flex-grow container mx-auto px-4 py-6">
         <ProductList />
+        <PaginationControls />
       </main>
       <footer className="bg-white border-t p-4 text-center text-sm text-gray-600">
         © {new Date().getFullYear()} Product Catalog. All rights reserved.
