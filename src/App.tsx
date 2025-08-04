@@ -1,4 +1,5 @@
 import { PaginationControls } from './components/PaginationControls'
+import { ProductFilters } from './components/ProductFilters'
 import { ProductList } from './components/ProductList'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         </div>
       </header>
       <main className="flex-grow container mx-auto px-4 py-6">
+        <ProductFilters />
         <ProductList />
         <PaginationControls />
       </main>
