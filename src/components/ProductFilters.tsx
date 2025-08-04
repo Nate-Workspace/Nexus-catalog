@@ -18,7 +18,7 @@ export function ProductFilters() {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4 p-4 border-b bg-background sticky top-0 z-10">
+    <div className="flex flex-col sm:flex-row justify-between w-full p-4 border-b bg-background top-0 z-10">
       <div className="flex-1">
         <Label htmlFor="category-filter" className="sr-only">
           Filter by Category
@@ -37,7 +37,7 @@ export function ProductFilters() {
         </Select>
       </div>
 
-      <div className="flex-1">
+      <div className="justify-end">
         <Label htmlFor="sort-by" className="sr-only">
           Sort by Price
         </Label>

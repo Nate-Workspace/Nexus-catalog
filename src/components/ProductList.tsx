@@ -10,6 +10,7 @@ import { Terminal } from "lucide-react"
 
 export function ProductList() {
   const dispatch = useAppDispatch()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { displayedProducts, loading, error } = useAppSelector((state:any) => state.products)
 
   useEffect(() => {
@@ -38,7 +39,9 @@ export function ProductList() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-      {displayedProducts.map((product:any) => (
+      {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      displayedProducts.map((product:any) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
