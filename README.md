@@ -1,69 +1,88 @@
-# React + TypeScript + Vite
+# Nexus Catalog: Modern E-commerce Product Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive e-commerce product catalog built with React, TypeScript, Tailwind CSS, and shadcn/ui components. This application allows users to browse, filter, and sort products with a polished and responsive user experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **API Integration**: Fetches product data from a public API (https://dummyjson.com/products).
+*   **Loading & Error States**: Includes loading skeletons for a smooth user experience and clear error state handling.
+*   **Filtering & Sorting**:
+    *   Category filtering using a dropdown.
+    *   Price sorting (ascending/descending).
+    *   Supports multi-criteria filtering (e.g., category and price).
+*   **Pagination**: Traditional pagination with page numbers for easy navigation.
+*   **Responsive Design**: Mobile-first layout with a responsive grid, ensuring a great experience across various devices.
+*   **UI Components**: Utilizes `shadcn/ui` components like Card, Button, Skeleton, Select, and Alert for a consistent and accessible design.
+*   **State Management**: Leverages Redux Toolkit to manage the product list, filters, sorting, and pagination state efficiently.
+*   **Type Safety**: Built entirely with TypeScript, ensuring strict types for API responses, Redux state, and component props.
+*   **User Experience**: Clean, accessible, and user-friendly interface with subtle transitions and a well-spaced layout.
 
-## Expanding the ESLint configuration
+## 🚀 Project Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Follow these steps to get the project up and running on your local machine.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Make sure you have Node.js (v18 or higher recommended) and npm installed.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Initialize your Vite Project
+
+If you haven't already, create your Vite project with React and TypeScript:
+
+```bash
+npm create vite@latest nexus-catalog -- --template react-tsc
+cd nexus-catalog
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Install all the necessary packages, including Tailwind CSS, Redux Toolkit, Lucide React icons, and shadcn/ui components:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm install tailwindcss @tailwindcss/vite
+npm install @reduxjs/toolkit react-redux lucide-react
+npx shadcn@latest init # Follow the prompts after this one
+npx shadcn@latest add button card select skeleton alert
 ```
+
+### 3. Update Tailwind CSS Configuration
+
+Ensure your `tsconfig.json`, `vite.config.ts`and some other files are correctly configured to scan your source files for Tailwind classes.
+
+
+### 4. Add Global CSS
+
+Ensure your `src/index.css` file includes the Tailwind directives:
+
+```css
+@import "tailwindcss";
+```
+
+### 5. Copy Project Files
+
+Place the provided React components, Redux store files, and type definitions into their respective `src/` subdirectories:
+
+*   `src/main.tsx`
+*   `src/App.tsx`
+*   `src/lib/types.ts`
+*   `src/store/products-slice.ts`
+*   `src/store/store.ts`
+*   `src/store/hooks.ts`
+*   `src/components/LoadingSkeleton.tsx`
+*   `src/components/ProductCard.tsx`
+*   `src/components/ProductList.tsx`
+*   `src/components/ProductFilters.tsx`
+*   `src/components/PaginationControls.tsx`
+
+### 6. Run the Development Server
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to `http://localhost:5173` (or the port indicated by Vite) to see the application in action.
+```
+
